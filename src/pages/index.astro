@@ -3,14 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { ciudades, EMPRESA } from '../data/index';
 import { siteConfig } from '../config/site';
 
-const title       = `Vaciado de pisos y locales en Terrassa – Presupuesto gratis | ${siteConfig.businessName}`;
-const description = `Servicio de vaciado de pisos, locales y recogida de muebles en Terrassa y comarca. Presupuesto gratuito en 24 h, equipo propio, gestión de residuos certificada. Llama al ${siteConfig.phone}.`;
-
-const terrassa = ciudades.find(c => c.slug === 'terrassa') ?? ciudades[0];
+const mainCiudad  = ciudades[0];
+const title       = `Vaciado de pisos y locales en ${siteConfig.mainCity} – Presupuesto gratis | ${siteConfig.businessName}`;
+const description = `Servicio de vaciado de pisos, locales y recogida de muebles en ${siteConfig.mainCity} y comarca. Presupuesto gratuito en 24 h, equipo propio, gestión de residuos certificada. Llama al ${siteConfig.phone}.`;
 
 const faqs = [
   {
-    pregunta: '¿Cuánto cuesta vaciar un piso en Terrassa?',
+    pregunta: `¿Cuánto cuesta vaciar un piso en ${siteConfig.mainCity}?`,
     respuesta: 'El precio depende del tamaño y el volumen de enseres. Un piso de 70–90 m² suele estar entre 250 € y 500 €. Te enviamos presupuesto gratuito en menos de 24 horas, sin visita previa en muchos casos (basta con fotos).',
   },
   {
@@ -43,11 +42,11 @@ const faqs = [
     <div class="container hero-inner">
 
       <div class="hero-text">
-        <span class="eyebrow hero-eyebrow">Servicio local en Terrassa y comarca</span>
+        <span class="eyebrow hero-eyebrow">Servicio local en {siteConfig.mainCity} y comarca</span>
 
         <h1>
           Vaciado de pisos y locales<br />
-          <span class="hero-h1-accent">en Terrassa</span>
+          <span class="hero-h1-accent">en {siteConfig.mainCity}</span>
         </h1>
 
         <p class="hero-sub">
@@ -56,8 +55,8 @@ const faqs = [
         </p>
 
         <div class="hero-ctas">
-          <a href={`tel:${terrassa.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-lg">
-            📞 Llamar ahora — {terrassa.telefono}
+          <a href={`tel:${mainCiudad.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-lg">
+            📞 Llamar ahora — {mainCiudad.telefono}
           </a>
           <a href="#contacto-form" class="btn btn-ghost btn-lg">
             Pedir presupuesto gratis
@@ -76,7 +75,7 @@ const faqs = [
         <div class="hero-card">
           <div class="hero-card-header">
             <span class="status-dot"></span>
-            <span>Disponible ahora en Terrassa</span>
+            <span>Disponible ahora en {siteConfig.mainCity}</span>
           </div>
           <p class="hero-card-stat">+500</p>
           <p class="hero-card-label">vaciados realizados</p>
@@ -106,7 +105,7 @@ const faqs = [
   <section class="sec sec--tint" aria-labelledby="beneficios-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="beneficios-heading">¿Por qué elegirnos para vaciar tu piso en Terrassa?</h2>
+        <h2 id="beneficios-heading">¿Por qué elegirnos para vaciar tu piso en {siteConfig.mainCity}?</h2>
         <p class="section-sub">Más de 10 años vaciando inmuebles en el Vallès Occidental. Equipo propio, sin subcontratas y con gestión de residuos certificada.</p>
       </div>
 
@@ -117,7 +116,7 @@ const faqs = [
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <h3>Equipo propio en Terrassa</h3>
+          <h3>Equipo propio en {siteConfig.mainCity}</h3>
           <p>No subcontratamos. Nuestros operarios son empleados directos con formación y seguro. Trato directo y responsable siempre.</p>
         </li>
         <li class="benefit-card">
@@ -154,7 +153,7 @@ const faqs = [
             </svg>
           </div>
           <h3>Donamos a entidades sociales</h3>
-          <p>Los muebles y objetos en buen estado los donamos a asociaciones locales de Terrassa y el Vallès. Damos una segunda vida a todo lo que sea reutilizable.</p>
+          <p>Los muebles y objetos en buen estado los donamos a asociaciones locales de {siteConfig.mainCity} y alrededores. Damos una segunda vida a todo lo que sea reutilizable.</p>
         </li>
         <li class="benefit-card">
           <div class="benefit-icon" aria-hidden="true">
@@ -173,12 +172,12 @@ const faqs = [
   <section class="sec" aria-labelledby="servicios-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="servicios-heading">Nuestros servicios de vaciado en Terrassa</h2>
+        <h2 id="servicios-heading">Nuestros servicios de vaciado en {siteConfig.mainCity}</h2>
         <p class="section-sub">Vaciado integral, limpieza especializada y pintura express. Todo lo que necesitas para dejar el inmueble listo.</p>
       </div>
 
       <p class="srv-grid-intro">
-        Servicios de <a href="/servicios/">vaciado y limpieza en Terrassa</a>. Equipo propio, presupuesto gratuito y gestión de residuos certificada.
+        Servicios de <a href="/servicios/">vaciado y limpieza en {siteConfig.mainCity}</a>. Equipo propio, presupuesto gratuito y gestión de residuos certificada.
       </p>
 
       <ul class="srv-grid" role="list">
@@ -196,7 +195,7 @@ const faqs = [
             <li>✓ Vaciado completo en un día</li>
             <li>✓ Limpieza básica incluida</li>
           </ul>
-          <a href="/terrassa/vaciado-pisos/" class="btn btn-primary">Ver servicio →</a>
+          <a href={`/${mainCiudad.slug}/vaciado-pisos/`} class="btn btn-primary">Ver servicio →</a>
         </li>
 
         <li class="srv-card">
@@ -212,7 +211,7 @@ const faqs = [
             <li>✓ Certificado de residuos</li>
             <li>✓ Horario flexible</li>
           </ul>
-          <a href="/terrassa/vaciado-locales/" class="btn btn-primary">Ver servicio →</a>
+          <a href={`/${mainCiudad.slug}/vaciado-locales/`} class="btn btn-primary">Ver servicio →</a>
         </li>
 
         <li class="srv-card">
@@ -228,7 +227,7 @@ const faqs = [
             <li>✓ Precio por volumen</li>
             <li>✓ Mismo día en muchos casos</li>
           </ul>
-          <a href="/terrassa/recogida-muebles/" class="btn btn-primary">Ver servicio →</a>
+          <a href={`/${mainCiudad.slug}/recogida-muebles/`} class="btn btn-primary">Ver servicio →</a>
         </li>
 
         <li class="srv-card">
@@ -286,8 +285,8 @@ const faqs = [
   <section class="sec sec--tint" aria-labelledby="zona-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="zona-heading">Zona de actuación: Terrassa y alrededores</h2>
-        <p class="section-sub">Cubrimos Terrassa y {ciudades.length - 1} municipios del Vallès Occidental. Desplazamiento incluido en el presupuesto.</p>
+        <h2 id="zona-heading">Zona de actuación: {siteConfig.mainCity} y alrededores</h2>
+        <p class="section-sub">Cubrimos {siteConfig.mainCity} y {ciudades.length - 1} municipios de la comarca. Desplazamiento incluido en el presupuesto.</p>
       </div>
 
       <ul class="zona-grid" role="list">
@@ -311,9 +310,9 @@ const faqs = [
       </ul>
 
       <div class="zona-barrios">
-        <p class="zona-barrios-label">También en los barrios de Terrassa:</p>
+        <p class="zona-barrios-label">También en los barrios de {siteConfig.mainCity}:</p>
         <ul class="zona-tags" role="list">
-          {terrassa.zonas.map(z => <li>{z}</li>)}
+          {mainCiudad.zonas.map(z => <li>{z}</li>)}
         </ul>
       </div>
     </div>
@@ -364,7 +363,7 @@ const faqs = [
   <section class="sec sec--dark" aria-labelledby="testimonios-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="testimonios-heading">Lo que dicen nuestros clientes en Terrassa</h2>
+        <h2 id="testimonios-heading">Lo que dicen nuestros clientes en {siteConfig.mainCity}</h2>
         <p class="section-sub-dark">Más de 500 familias y empresas han confiado en nosotros en el Vallès Occidental.</p>
       </div>
 
@@ -378,7 +377,7 @@ const faqs = [
             <div class="testimonio-avatar">MC</div>
             <div>
               <cite class="testimonio-nombre">Marta C.</cite>
-              <span class="testimonio-lugar">Terrassa · Vaciado de piso</span>
+              <span class="testimonio-lugar">{siteConfig.mainCity} · Vaciado de piso</span>
             </div>
           </footer>
         </article>
@@ -437,7 +436,7 @@ const faqs = [
   <section class="sec sec--tint" aria-labelledby="precios-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="precios-heading">Precios orientativos del vaciado en Terrassa</h2>
+        <h2 id="precios-heading">Precios orientativos del vaciado en {siteConfig.mainCity}</h2>
         <p class="section-sub">Presupuesto final gratuito y sin compromiso. Estos precios son orientativos — el coste real depende del volumen y accesibilidad.</p>
       </div>
 
@@ -452,7 +451,7 @@ const faqs = [
             <li>1–2 operarios, ½ día</li>
             <li>Gestión de residuos</li>
           </ul>
-          <a href={`tel:${terrassa.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-full">Pedir precio exacto</a>
+          <a href={`tel:${mainCiudad.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-full">Pedir precio exacto</a>
         </li>
 
         <li class="precio-card precio-card--highlight">
@@ -466,7 +465,7 @@ const faqs = [
             <li>Equipo de 3, jornada completa</li>
             <li>Gestión de residuos + limpieza básica</li>
           </ul>
-          <a href={`tel:${terrassa.telefono.replace(/\s/g,'')}`} class="btn btn-white btn-full">Pedir precio exacto</a>
+          <a href={`tel:${mainCiudad.telefono.replace(/\s/g,'')}`} class="btn btn-white btn-full">Pedir precio exacto</a>
         </li>
 
         <li class="precio-card">
@@ -479,12 +478,12 @@ const faqs = [
             <li>Equipo de 3–4, jornada completa</li>
             <li>Certificado de gestión incluido</li>
           </ul>
-          <a href={`tel:${terrassa.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-full">Pedir precio exacto</a>
+          <a href={`tel:${mainCiudad.telefono.replace(/\s/g,'')}`} class="btn btn-primary btn-full">Pedir precio exacto</a>
         </li>
       </ul>
 
       <p class="precios-aviso">
-        * Precios orientativos para Terrassa. El presupuesto definitivo se calcula según el volumen real, accesibilidad y distancia al punto limpio. Siempre gratuito y sin compromiso.
+        * Precios orientativos para {siteConfig.mainCity}. El presupuesto definitivo se calcula según el volumen real, accesibilidad y distancia al punto limpio. Siempre gratuito y sin compromiso.
       </p>
     </div>
   </section>
@@ -493,7 +492,7 @@ const faqs = [
   <section class="sec" aria-labelledby="faq-heading">
     <div class="container">
       <div class="section-header">
-        <h2 id="faq-heading">Preguntas frecuentes sobre vaciado de pisos en Terrassa</h2>
+        <h2 id="faq-heading">Preguntas frecuentes sobre vaciado de pisos en {siteConfig.mainCity}</h2>
         <p class="section-sub">Resolvemos las dudas más habituales antes de contratar el servicio.</p>
       </div>
 
@@ -580,18 +579,18 @@ const faqs = [
           <h3>Contacto directo</h3>
 
           <address class="cta-address">
-            <a href={`tel:${terrassa.telefono.replace(/\s/g,'')}`} class="cta-contact-item cta-contact-item--primary">
+            <a href={`tel:${mainCiudad.telefono.replace(/\s/g,'')}`} class="cta-contact-item cta-contact-item--primary">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
               </svg>
               <div>
                 <span class="cta-contact-label">Llamar ahora</span>
-                <span class="cta-contact-value">{terrassa.telefono}</span>
+                <span class="cta-contact-value">{mainCiudad.telefono}</span>
               </div>
             </a>
 
             <a
-              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola%2C%20quiero%20un%20presupuesto%20para%20vaciado%20en%20Terrassa`}
+              href={`https://wa.me/${siteConfig.whatsapp}?text=Hola%2C%20quiero%20un%20presupuesto%20para%20vaciado%20en%20${encodeURIComponent(siteConfig.mainCity)}`}
               class="cta-contact-item"
               target="_blank"
               rel="noopener noreferrer"
@@ -612,7 +611,7 @@ const faqs = [
               </svg>
               <div>
                 <span class="cta-contact-label">Dirección</span>
-                <span class="cta-contact-value">{terrassa.direccion}, {terrassa.codigoPostal} {terrassa.nombre}</span>
+                <span class="cta-contact-value">{mainCiudad.direccion}, {mainCiudad.codigoPostal} {mainCiudad.nombre}</span>
               </div>
             </div>
 

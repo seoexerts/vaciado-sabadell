@@ -47,6 +47,16 @@ const navLinks = [
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     </noscript>
     <slot name="head" />
+    <!-- Colores corporativos dinámicos desde siteConfig -->
+    <style set:html={`
+      :root {
+        --c-primary:   ${siteConfig.colorPrimary};
+        --c-primary-d: color-mix(in srgb, ${siteConfig.colorPrimary} 78%, #000);
+        --c-primary-l: color-mix(in srgb, ${siteConfig.colorPrimary}  8%, #fff);
+        --c-text:      ${siteConfig.colorText};
+        --c-bg-dark:   color-mix(in srgb, ${siteConfig.colorText} 95%, #000);
+      }
+    `} />
   </head>
 
   <body>

@@ -40,6 +40,12 @@ export const siteConfig = {
     bestRating:   5,
   },
 
+  // ── Colores corporativos ──────────────────────────────
+  /** Color primario: botones, enlaces, acentos. Formato hex */
+  colorPrimary: '#0057ff',
+  /** Color texto principal. Formato hex */
+  colorText:    '#0f172a',
+
   // ── Redes sociales ────────────────────────────────────
   social: {
     facebook:  '',

@@ -77,9 +77,9 @@ const faqs = [
         <p>
           Explora nuestros <a href="/servicios/">servicios de vaciado y limpieza</a>,
           o consulta directamente las páginas de
-          <a href="/terrassa/vaciado-pisos/">vaciado de pisos en Terrassa</a>,
-          <a href="/terrassa/vaciado-locales/">vaciado de locales en Terrassa</a>
-          y <a href="/terrassa/recogida-muebles/">recogida de muebles en Terrassa</a>.
+          <a href={`/${ciudades[0].slug}/vaciado-pisos/`}>vaciado de pisos en {ciudades[0].nombre}</a>,
+          <a href={`/${ciudades[0].slug}/vaciado-locales/`}>vaciado de locales en {ciudades[0].nombre}</a>
+          y <a href={`/${ciudades[0].slug}/recogida-muebles/`}>recogida de muebles en {ciudades[0].nombre}</a>.
         </p>
       </div>
 
